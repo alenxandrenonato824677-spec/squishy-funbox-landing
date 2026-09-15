@@ -1,0 +1,20 @@
+[build]
+  command = "npm run build"
+  publish = "dist/client"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Mesmas URLs usadas pelo frontend em qualquer host
+[[redirects]]
+  from = "/api/public/pix/create"
+  to = "/.netlify/functions/pix-create"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/public/pix/check"
+  to = "/.netlify/functions/pix-check"
+  status = 200
+  force = true
