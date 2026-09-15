@@ -106,7 +106,10 @@ function Index() {
   const [cartCount, setCartCount] = useState(0);
   const [cartOpen, setCartOpen] = useState(false);
   const current = variants[selected];
-  const currentPhoto = photos[activePhoto] ?? photos[0];
+  const currentPhoto = photos[activePhoto] ?? {
+    src: product1.url,
+    alt: "MiniKo Squishy FunBox — foto principal",
+  };
 
   const changePhoto = (direction: number) => {
     setActivePhoto((value) => (value + direction + photos.length) % photos.length);
