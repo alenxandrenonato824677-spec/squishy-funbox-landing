@@ -82,7 +82,7 @@ export const Route = createFileRoute("/")({
         description: "Caixa surpresa com 8 squishies de diferentes formatos, texturas e cores.",
         brand: { "@type": "Brand", name: "MiniKo" },
         aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "380" },
-        offers: { "@type": "AggregateOffer", priceCurrency: "BRL", lowPrice: "267.00", highPrice: "297.00", availability: "https://schema.org/InStock" },
+        offers: { "@type": "AggregateOffer", priceCurrency: "BRL", lowPrice: "59.80", highPrice: "79.00", availability: "https://schema.org/InStock" },
       }),
     }],
   }),
