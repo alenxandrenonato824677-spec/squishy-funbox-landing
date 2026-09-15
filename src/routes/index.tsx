@@ -39,8 +39,8 @@ const photos = [product1, product2, product3, product4, product5, product6, prod
 );
 
 const variants = {
-  cute: { name: "FunBox Cute", price: 267, oldPrice: 379, saving: 112, image: product8.url },
-  classic: { name: "FunBox Classic", price: 297, oldPrice: 399, saving: 102, image: product9.url },
+  cute: { name: "FunBox Cute", price: 59.8, oldPrice: 84.9, saving: 25.1, image: product8.url },
+  classic: { name: "FunBox Classic", price: 79, oldPrice: 109.9, saving: 30.9, image: product9.url },
 } as const;
 
 const squishies = [
