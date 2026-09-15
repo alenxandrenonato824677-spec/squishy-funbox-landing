@@ -180,8 +180,8 @@
 html { scroll-behavior: smooth; }
 
 @keyframes cta-pulse {
-  0%, 100% { box-shadow: var(--shadow-cta); transform: translateY(0); }
-  50% { box-shadow: 0 16px 38px oklch(0.64 0.22 350 / 40%); transform: translateY(-1px); }
+  0%, 100% { box-shadow: var(--shadow-cta); }
+  50% { box-shadow: 0 16px 38px oklch(0.64 0.22 350 / 40%); }
 }
 
 @utility cta-pulse { animation: cta-pulse 2.2s ease-in-out infinite; }
