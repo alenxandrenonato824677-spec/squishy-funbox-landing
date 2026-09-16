@@ -286,22 +286,22 @@ export function CheckoutModal({
               <div>
                 <Label htmlFor="co-name" className="text-xs font-bold">Nome completo</Label>
                 <Input id="co-name" value={name} onChange={(event) => setName(event.target.value)} placeholder="Seu nome completo" autoComplete="name" className={field} />
-                {errors.name && <p className="mt-1 text-xs font-semibold text-destructive">{errors.name}</p>}
+                {errors["name"] && <p className="mt-1 text-xs font-semibold text-destructive">{errors["name"]}</p>}
               </div>
               <div>
                 <Label htmlFor="co-email" className="text-xs font-bold">E-mail</Label>
                 <Input id="co-email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="voce@email.com" autoComplete="email" className={field} />
-                {errors.email && <p className="mt-1 text-xs font-semibold text-destructive">{errors.email}</p>}
+                {errors["email"] && <p className="mt-1 text-xs font-semibold text-destructive">{errors["email"]}</p>}
               </div>
               <div>
                 <Label htmlFor="co-phone" className="text-xs font-bold">Telefone / WhatsApp</Label>
                 <Input id="co-phone" value={phone} onChange={(event) => setPhone(maskPhone(event.target.value))} placeholder="(99) 99999-9999" inputMode="numeric" autoComplete="tel" className={field} />
-                {errors.phone && <p className="mt-1 text-xs font-semibold text-destructive">{errors.phone}</p>}
+                {errors["phone"] && <p className="mt-1 text-xs font-semibold text-destructive">{errors["phone"]}</p>}
               </div>
               <div>
                 <Label htmlFor="co-cpf" className="text-xs font-bold">CPF</Label>
                 <Input id="co-cpf" value={cpf} onChange={(event) => setCpf(maskCpf(event.target.value))} placeholder="999.999.999-99" inputMode="numeric" className={field} />
-                {errors.cpf && <p className="mt-1 text-xs font-semibold text-destructive">{errors.cpf}</p>}
+                {errors["cpf"] && <p className="mt-1 text-xs font-semibold text-destructive">{errors["cpf"]}</p>}
               </div>
               <Button onClick={goToShipping} className="mt-2 h-13 w-full rounded-xl text-base font-black uppercase shadow-cta">Continuar para a entrega</Button>
             </div>
@@ -315,18 +315,18 @@ export function CheckoutModal({
                   <Input id="co-cep" value={cep} onChange={(event) => { const masked = maskCep(event.target.value); setCep(masked); if (digits(masked).length === 8) void lookupCep(masked); }} placeholder="00000-000" inputMode="numeric" autoComplete="postal-code" className={field} />
                   {cepLoading && <Loader2 className="absolute right-3 top-4 size-5 animate-spin text-primary" />}
                 </div>
-                {errors.cep && <p className="mt-1 text-xs font-semibold text-destructive">{errors.cep}</p>}
+                {errors["cep"] && <p className="mt-1 text-xs font-semibold text-destructive">{errors["cep"]}</p>}
               </div>
               <div>
                 <Label htmlFor="co-street" className="text-xs font-bold">Rua / Logradouro</Label>
                 <Input id="co-street" value={street} onChange={(event) => setStreet(event.target.value)} className={field} autoComplete="address-line1" />
-                {errors.street && <p className="mt-1 text-xs font-semibold text-destructive">{errors.street}</p>}
+                {errors["street"] && <p className="mt-1 text-xs font-semibold text-destructive">{errors["street"]}</p>}
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <Label htmlFor="co-number" className="text-xs font-bold">Número</Label>
                   <Input id="co-number" value={number} onChange={(event) => setNumber(event.target.value)} className={field} />
-                  {errors.number && <p className="mt-1 text-xs font-semibold text-destructive">{errors.number}</p>}
+                  {errors["number"] && <p className="mt-1 text-xs font-semibold text-destructive">{errors["number"]}</p>}
                 </div>
                 <div>
                   <Label htmlFor="co-complement" className="text-xs font-bold">Complemento</Label>
@@ -336,13 +336,13 @@ export function CheckoutModal({
               <div>
                 <Label htmlFor="co-district" className="text-xs font-bold">Bairro</Label>
                 <Input id="co-district" value={district} onChange={(event) => setDistrict(event.target.value)} className={field} />
-                {errors.district && <p className="mt-1 text-xs font-semibold text-destructive">{errors.district}</p>}
+                {errors["district"] && <p className="mt-1 text-xs font-semibold text-destructive">{errors["district"]}</p>}
               </div>
               <div className="grid grid-cols-[1fr_88px] gap-3">
                 <div>
                   <Label htmlFor="co-city" className="text-xs font-bold">Cidade</Label>
                   <Input id="co-city" value={city} onChange={(event) => setCity(event.target.value)} className={field} />
-                  {errors.city && <p className="mt-1 text-xs font-semibold text-destructive">{errors.city}</p>}
+                  {errors["city"] && <p className="mt-1 text-xs font-semibold text-destructive">{errors["city"]}</p>}
                 </div>
                 <div>
                   <Label htmlFor="co-uf" className="text-xs font-bold">UF</Label>
@@ -369,7 +369,7 @@ export function CheckoutModal({
                     );
                   })}
                 </div>
-                {errors.shipping && <p className="mt-1 text-xs font-semibold text-destructive">{errors.shipping}</p>}
+                {errors["shipping"] && <p className="mt-1 text-xs font-semibold text-destructive">{errors["shipping"]}</p>}
               </fieldset>
 
               <div className="flex gap-3 pt-2">
