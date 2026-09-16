@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { CheckoutModal } from "@/components/CheckoutModal";
 import { PixCheckout } from "@/components/PixCheckout";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
@@ -106,6 +107,7 @@ function Index() {
   const [lightbox, setLightbox] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [cartOpen, setCartOpen] = useState(false);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
   const current = variants[selected];
   const currentPhoto = photos[activePhoto] ?? {
     src: product1.url,
@@ -129,7 +131,8 @@ function Index() {
 
   const buy = () => {
     setCartCount(1);
-    setCartOpen(true);
+    setCartOpen(false);
+    setCheckoutOpen(true);
   };
 
   return (
