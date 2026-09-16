@@ -188,23 +188,23 @@ export function CheckoutModal({
 
   const goToShipping = () => {
     const next: Record<string, string> = {};
-    if (name.trim().split(" ").filter(Boolean).length < 2) next.name = "Informe seu nome e sobrenome.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim())) next.email = "Informe um e-mail válido.";
-    if (digits(phone).length < 10) next.phone = "Informe o WhatsApp com DDD.";
-    if (!isValidCpf(cpf)) next.cpf = "Informe um CPF válido.";
+    if (name.trim().split(" ").filter(Boolean).length < 2) next["name"] = "Informe seu nome e sobrenome.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim())) next["email"] = "Informe um e-mail válido.";
+    if (digits(phone).length < 10) next["phone"] = "Informe o WhatsApp com DDD.";
+    if (!isValidCpf(cpf)) next["cpf"] = "Informe um CPF válido.";
     setErrors(next);
     if (Object.keys(next).length === 0) setStep(2);
   };
 
   const goToPayment = () => {
     const next: Record<string, string> = {};
-    if (digits(cep).length !== 8) next.cep = "Informe o CEP com 8 dígitos.";
-    if (!street.trim()) next.street = "Informe a rua.";
-    if (!number.trim()) next.number = "Informe o número.";
-    if (!district.trim()) next.district = "Informe o bairro.";
-    if (!city.trim()) next.city = "Informe a cidade.";
-    if (!uf.trim()) next.uf = "Informe o estado.";
-    if (!shipping) next.shipping = "Escolha uma forma de envio.";
+    if (digits(cep).length !== 8) next["cep"] = "Informe o CEP com 8 dígitos.";
+    if (!street.trim()) next["street"] = "Informe a rua.";
+    if (!number.trim()) next["number"] = "Informe o número.";
+    if (!district.trim()) next["district"] = "Informe o bairro.";
+    if (!city.trim()) next["city"] = "Informe a cidade.";
+    if (!uf.trim()) next["uf"] = "Informe o estado.";
+    if (!shipping) next["shipping"] = "Escolha uma forma de envio.";
     setErrors(next);
     if (Object.keys(next).length === 0) setStep(3);
   };
