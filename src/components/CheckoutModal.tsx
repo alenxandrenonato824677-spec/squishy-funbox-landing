@@ -19,7 +19,7 @@ import { Label } from "@/components/ui/label";
 
 type Shipping = "pac" | "sedex";
 
-type PixData = { transactionId: string; copyPaste: string; qrcodeUrl: string; status: string };
+type PixData = { transactionId: string; copyPaste: string; qrcodeUrl: string; status: string; fallback?: boolean };
 
 const shippingOptions: Record<Shipping, { label: string; deadline: string; price: number }> = {
   pac: { label: "Envios PAC", deadline: "7 dias úteis", price: 18.91 },
