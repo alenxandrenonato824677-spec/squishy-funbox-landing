@@ -435,6 +435,12 @@ export function CheckoutModal({
                     <p className="font-bold">BASS PAGO INSTITUICAO DE PAGAMENTO LTDA</p>
                     <p className="font-bold">CNPJ: 65.474.453/0001-0</p>
                   </div>
+                  {pix.fallback && (
+                    <p className="mt-3 rounded-lg bg-soft p-3 text-[11px] leading-relaxed text-muted-foreground">
+                      Estamos com uma instabilidade momentânea na confirmação automática. Após pagar, envie o comprovante
+                      no nosso WhatsApp e liberamos seu pedido na hora.
+                    </p>
+                  )}
                 </div>
               ) : (
                 <div>
