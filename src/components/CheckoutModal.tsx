@@ -234,6 +234,7 @@ export function CheckoutModal({
         copyPaste: payload.copyPaste,
         qrcodeUrl: payload.qrcodeUrl ?? "",
         status: payload.status ?? "PENDENTE",
+        ...(payload.fallback ? { fallback: true } : {}),
       });
     } catch {
       setPayError("Não conseguimos conectar ao pagamento. Verifique sua internet e tente novamente.");
