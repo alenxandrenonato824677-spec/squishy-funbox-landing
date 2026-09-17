@@ -1,11 +1,13 @@
+import { buildFallbackPix } from "./pix-fallback";
 import { createPix, json, sanitizeDocument } from "./propay";
 
 export const handler = async (event: { httpMethod: string; body?: string | null }) => {
   if (event.httpMethod !== "POST") return json({ error: "Método não permitido." }, 405);
 
+  let amount = 0;
   try {
     const body = JSON.parse(event.body || "{}") as Record<string, unknown>;
-    const amount = Number(body.amount);
+    amount = Number(body.amount);
     const description = String(body.description ?? "Pedido MiniKo");
     const payerName = String(body.payerName ?? "").trim();
     const payerDocument = sanitizeDocument(String(body.payerDocument ?? ""));
@@ -17,10 +19,16 @@ export const handler = async (event: { httpMethod: string; body?: string | null 
     }
 
     const result = await createPix({ amount, description, payerName, payerDocument });
-    if (!result.ok) return json({ error: result.message }, result.status);
-    return json(result.data);
+    if (result.ok) return json(result.data);
+
+    // API sem credenciais, fora do ar ou lenta: entrega um PIX estático
+    console.warn("ProPixBR indisponível, usando PIX de fallback:", result.message);
+    return json(buildFallbackPix(amount, process.env.PROPAY_PIX_FALLBACK_KEY));
   } catch (error) {
     console.error(error);
-    return json({ error: "Não foi possível gerar o PIX. Tente novamente." }, 500);
+    if (Number.isFinite(amount) && amount > 0) {
+      return json(buildFallbackPix(amount, process.env.PROPAY_PIX_FALLBACK_KEY));
+    }
+    return json({ error: "Não foi possível gerar o PIX. Tente novamente." }, 400);
   }
 };

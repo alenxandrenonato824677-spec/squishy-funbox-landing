@@ -19,7 +19,7 @@ import { Label } from "@/components/ui/label";
 
 type Shipping = "pac" | "sedex";
 
-type PixData = { transactionId: string; copyPaste: string; qrcodeUrl: string; status: string };
+type PixData = { transactionId: string; copyPaste: string; qrcodeUrl: string; status: string; fallback?: boolean };
 
 const shippingOptions: Record<Shipping, { label: string; deadline: string; price: number }> = {
   pac: { label: "Envios PAC", deadline: "7 dias úteis", price: 18.91 },
@@ -234,6 +234,7 @@ export function CheckoutModal({
         copyPaste: payload.copyPaste,
         qrcodeUrl: payload.qrcodeUrl ?? "",
         status: payload.status ?? "PENDENTE",
+        ...(payload.fallback ? { fallback: true } : {}),
       });
     } catch {
       setPayError("Não conseguimos conectar ao pagamento. Verifique sua internet e tente novamente.");
@@ -434,6 +435,12 @@ export function CheckoutModal({
                     <p className="font-bold">BASS PAGO INSTITUICAO DE PAGAMENTO LTDA</p>
                     <p className="font-bold">CNPJ: 65.474.453/0001-0</p>
                   </div>
+                  {pix.fallback && (
+                    <p className="mt-3 rounded-lg bg-soft p-3 text-[11px] leading-relaxed text-muted-foreground">
+                      Estamos com uma instabilidade momentânea na confirmação automática. Após pagar, envie o comprovante
+                      no nosso WhatsApp e liberamos seu pedido na hora.
+                    </p>
+                  )}
                 </div>
               ) : (
                 <div>
